@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 18
+        - nvm use 18
+        - npm install -g npm@10
+        - npm install --legacy-peer-deps
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: ./
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
