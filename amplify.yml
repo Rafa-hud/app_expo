@@ -3,11 +3,12 @@ frontend:
   phases:
     preBuild:
       commands:
-        - yum install -y tar xz
         - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
         - export NVM_DIR="$HOME/.nvm"
-        - '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
-        - nvm install 18 --reinstall-packages-from=current
+        - . $NVM_DIR/nvm.sh
+        - nvm install 18
+        - node -v
+        - npm install -g npm@latest
         - npm install --legacy-peer-deps
     build:
       commands:
